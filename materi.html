@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi P3K – EdukasiP3K</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🩺 EdukasiP3K</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="materi.html" class="active">Materi</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Materi P3K</h1>
+    <p>Pelajari 6 topik pertolongan pertama yang paling penting</p>
+  </div>
+
+  <div class="materi-container">
+    <div class="topic-tabs">
+      <button class="tab-btn active" onclick="showTopic(0)">Luka</button>
+      <button class="tab-btn" onclick="showTopic(1)">Mimisan</button>
+      <button class="tab-btn" onclick="showTopic(2)">Tersedak</button>
+      <button class="tab-btn" onclick="showTopic(3)">Keracunan</button>
+      <button class="tab-btn" onclick="showTopic(4)">Patah Tulang</button>
+      <button class="tab-btn" onclick="showTopic(5)">CPR Dasar</button>
+    </div>
+
+    <!-- TOPIK 1: LUKA -->
+    <div class="topic-panel active" id="topic-0">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="8" rx="4"/><line x1="9" y1="12" x2="9.01" y2="12" stroke-width="3"/><line x1="15" y1="12" x2="15.01" y2="12" stroke-width="3"/><line x1="12" y1="9" x2="12" y2="15"/></svg></span>
+          <div>
+            <h2>Penanganan Luka</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Luka Terbuka & Luka Lecet</p>
+          </div>
+        </div>
+        <p class="topic-desc">Luka terbuka adalah kondisi di mana kulit robek atau tergores sehingga jaringan di bawahnya terekspos. Penanganan yang tepat mencegah infeksi dan mempercepat penyembuhan.</p>
+        <p class="steps-title">Langkah-langkah Penanganan</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Cuci tangan dengan sabun dan air mengalir selama 20 detik.</p><p class="step-note">Gunakan sarung tangan lateks jika tersedia untuk menghindari kontak langsung dengan darah.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Hentikan perdarahan dengan menekan luka menggunakan kain bersih atau kasa steril selama 5–10 menit.</p><p class="step-note">Jangan mengangkat kain penekan sebelum 5 menit untuk memberi waktu darah membeku.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text">Bersihkan luka dengan air bersih mengalir. Gunakan pinset steril untuk mengangkat kotoran yang terlihat.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">Oleskan antiseptik (seperti povidone iodine) di sekitar luka, bukan langsung di dalam luka.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Tutup luka dengan plester atau perban steril yang sesuai ukuran luka.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">6</span>
+            <div><p class="step-text">Ganti perban setiap hari atau ketika perban basah/kotor.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>Segera ke dokter jika:</strong> luka dalam (&gt;1 cm), perdarahan tidak berhenti setelah 15 menit, ada tanda infeksi (bengkak, merah, nanah, demam), atau luka akibat gigitan hewan.</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/Zj8z-x4kPNg" allowfullscreen title="Panduan Perawatan Luka - Kemenkes RI"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://ayosehat.kemkes.go.id/list-perangkat-ajar/pertolongan-pertama-saat-kamu-terluka" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Pertolongan Pertama Saat Terluka — Ayosehat Kemenkes RI
+            </a>
+            <a class="ref-link" href="https://keslan.kemkes.go.id/view_artikel/1206/penanganan-awal-luka-bakar" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Penanganan Awal Luka — Keslan Kemenkes RI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIK 2: MIMISAN -->
+    <div class="topic-panel" id="topic-1">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2 12 2z"/><path d="M12 15v-4"/></svg></span>
+          <div>
+            <h2>Mimisan</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Epistaksis (Perdarahan Hidung)</p>
+          </div>
+        </div>
+        <p class="topic-desc">Mimisan adalah perdarahan dari dalam hidung yang umum terjadi dan biasanya tidak berbahaya. Penyebab umum: udara kering, membuang ingus terlalu keras, benturan, atau tekanan darah tinggi.</p>
+        <p class="steps-title">Langkah-langkah Penanganan</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Dudukkan korban dengan posisi sedikit membungkuk ke depan.</p><p class="step-note">JANGAN mendongakkan kepala ke belakang — darah bisa masuk ke tenggorokan dan menyebabkan mual atau tersedak.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Pencet cuping hidung (bagian lunak) dengan ibu jari dan telunjuk selama 10–15 menit tanpa melepas.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text">Minta korban bernapas melalui mulut selama hidung dipencet.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">Kompres batang hidung dengan es yang dibungkus kain untuk membantu menyempitkan pembuluh darah.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Setelah berhenti, instruksikan korban untuk tidak menghembuskan hidung atau menundukkan kepala selama 15 menit.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>Segera ke dokter jika:</strong> mimisan berlangsung lebih dari 30 menit, darah keluar sangat deras, atau mimisan akibat benturan keras di kepala.</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/RLVmFdFDZQ8" allowfullscreen title="Pertolongan Pertama Saat Mimisan"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://www.alodokter.com/mimisan" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Mimisan: Penyebab dan Pertolongan Pertama — Alodokter
+            </a>
+            <a class="ref-link" href="https://www.halodoc.com/artikel/cara-menghentikan-mimisan-yang-tepat" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Cara Menghentikan Mimisan yang Tepat — Halodoc
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIK 3: TERSEDAK -->
+    <div class="topic-panel" id="topic-2">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l-3 4"/><path d="M12 12l3 4"/><path d="M9 9H7a2 2 0 0 0-2 2v1"/><path d="M15 9h2a2 2 0 0 1 2 2v1"/><path d="M10 20h4"/><path d="M12 16v4"/></svg></span>
+          <div>
+            <h2>Tersedak</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Obstruksi Jalan Napas Parsial / Total</p>
+          </div>
+        </div>
+        <p class="topic-desc">Tersedak terjadi ketika benda asing menyumbat saluran napas. Kondisi ini merupakan darurat yang harus ditangani segera — otak bisa rusak hanya dalam 4–6 menit tanpa oksigen.</p>
+        <p class="steps-title">Langkah-langkah — Teknik Heimlich (Dewasa &amp; Anak &gt;1 tahun)</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Tanya korban: "Apakamu tersedak?" Jika korban tidak bisa berbicara, batuk, atau bernapas, segera bertindak.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Berdirilah di belakang korban, condongkan korban sedikit ke depan.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text">Berikan 5 pukulan keras di punggung korban (di antara dua tulang belikat) menggunakan telapak tangan.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">Lingkarkan kedua tangan ke pinggang korban. Kepalkan satu tangan, letakkan di atas pusar dan di bawah tulang dada.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Genggam kepalan dengan tangan lain, lakukan 5 hentakan ke dalam dan ke atas (abdominal thrust) dengan cepat dan kuat.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">6</span>
+            <div><p class="step-text">Ulangi siklus 5 pukulan punggung + 5 hentakan perut hingga benda asing keluar atau korban pingsan.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">7</span>
+            <div><p class="step-text">Jika korban pingsan, baringkan dan mulai CPR. Setiap kali membuka jalan napas, cek adanya benda asing yang terlihat.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>Bayi &lt;1 tahun:</strong> Gunakan 5 tepukan punggung + 5 kompresi dada (bukan hentakan perut). Selalu hubungi 119 / 112 dalam kondisi darurat.</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/CMAuqOhfkw8" allowfullscreen title="Cara Heimlich Maneuver - tvOne"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://www.alodokter.com/heimlich-maneuver-pertolongan-pertama-untuk-orang-yang-tersedak" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Heimlich Maneuver, Pertolongan Pertama Tersedak — Alodokter
+            </a>
+            <a class="ref-link" href="https://www.halodoc.com/artikel/mengenal-heimlich-maneuver-teknik-bantu-tersedak" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Mengenal Heimlich Maneuver — Halodoc
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIK 4: KERACUNAN -->
+    <div class="topic-panel" id="topic-3">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 2.5a4.5 4.5 0 0 0-6.364 6.364l8 8a4.5 4.5 0 0 0 6.364-6.364z"/><line x1="7" y1="7" x2="17" y2="17"/></svg></span>
+          <div>
+            <h2>Keracunan</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Keracunan Makanan &amp; Zat Berbahaya</p>
+          </div>
+        </div>
+        <p class="topic-desc">Keracunan dapat disebabkan oleh makanan basi, zat kimia, obat-obatan berlebihan, atau gigitan serangga/ular. Kecepatan pertolongan pertama sangat menentukan.</p>
+        <p class="steps-title">Langkah-langkah Penanganan Keracunan Makanan</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Hubungi layanan darurat (119) atau Hotline Racun BPOM segera.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Catat informasi penting: zat/makanan apa yang dimakan, jumlah, kapan waktu terpapar, dan gejala yang muncul.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text">Jika korban masih sadar dan tidak kejang, berikan air putih secukupnya.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">JANGAN memaksakan korban untuk muntah kecuali atas instruksi tenaga medis — beberapa zat lebih berbahaya jika dimuntahkan.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Jika korban tidak sadar, posisikan dalam posisi pemulihan (miring ke samping) agar tidak tersedak muntahan.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">6</span>
+            <div><p class="step-text">Bawa korban ke fasilitas kesehatan terdekat beserta informasi atau sisa zat/makanan penyebab keracunan.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>JANGAN berikan:</strong> susu, minyak, atau makanan apapun tanpa instruksi dokter. Jika keracunan zat korosif (asam/basa kuat), JANGAN rangsang muntah.</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/HmHPmP-Jhbk" allowfullscreen title="Pertolongan Pertama Keracunan Makanan"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://pusatkrisis.kemkes.go.id/pertolongan-pertama-menghadapi-kejadian-luar-biasa-klb-keracunan-makanan" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Pertolongan Pertama Keracunan Makanan — Pusat Krisis Kemenkes RI
+            </a>
+            <a class="ref-link" href="https://penanggulangankrisis.kemkes.go.id/pertolongan-pertama-saat-keracunan-makanan-dan-obat" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Pertolongan Pertama Keracunan Makanan & Obat — Kemenkes RI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIK 5: PATAH TULANG -->
+    <div class="topic-panel" id="topic-4">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2a3 3 0 0 1 0 6H7a3 3 0 0 1 0-6"/><path d="M7 2a3 3 0 0 0 0 6"/><path d="M17 22a3 3 0 0 0 0-6H7a3 3 0 0 0 0 6"/><path d="M7 22a3 3 0 0 1 0-6"/><rect x="7" y="8" width="10" height="8" rx="1"/></svg></span>
+          <div>
+            <h2>Patah Tulang</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Fraktur Tertutup &amp; Terbuka</p>
+          </div>
+        </div>
+        <p class="topic-desc">Patah tulang adalah kondisi di mana tulang retak atau patah karena benturan keras, jatuh, atau tekanan berlebihan. Tujuan pertolongan pertama adalah mencegah pergerakan tulang yang dapat memperparah cedera.</p>
+        <p class="steps-title">Langkah-langkah Penanganan</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Jangan memindahkan korban kecuali dalam bahaya langsung — pergerakan bisa memperparah patah tulang.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Hentikan perdarahan jika ada (pada fraktur terbuka) dengan menekan luka menggunakan kain bersih.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text">Imobilisasi tulang yang dicurigai patah — pasang bidai (papan, majalah gulung, atau karton tebal) di kedua sisi anggota yang cedera.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">Lapisi bidai dengan kain lunak sebelum membalutnya dengan perban. Balut cukup kencang (tidak terlalu ketat) untuk tidak memotong sirkulasi darah.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Kompres area yang bengkak dengan es (dibungkus kain) untuk mengurangi pembengkakan dan nyeri.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">6</span>
+            <div><p class="step-text">Cek sirkulasi darah di bawah bidai secara berkala: pastikan area tidak mati rasa, dingin, atau membiru.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">7</span>
+            <div><p class="step-text">Segera bawa korban ke rumah sakit untuk pemeriksaan sinar-X dan penanganan lebih lanjut.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>JANGAN:</strong> mencoba meluruskan tulang yang patah, melepas bidai sebelum sampai ke rumah sakit, atau memberikan aspirin kepada korban (dapat meningkatkan perdarahan).</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/aCqRL_wCdg4" allowfullscreen title="Pertolongan Pertama Patah Tulang"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://keslan.kemkes.go.id/view_artikel/3757/pertolongan-pertama-pada-fraktur-atau-patah-tulang" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Pertolongan Pertama pada Fraktur / Patah Tulang — Keslan Kemenkes RI
+            </a>
+            <a class="ref-link" href="https://www.alodokter.com/patah-tulang" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Patah Tulang: Gejala, Penyebab, dan Penanganan — Alodokter
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIK 6: CPR -->
+    <div class="topic-panel" id="topic-5">
+      <div class="topic-card">
+        <div class="topic-card-header">
+          <span class="topic-emoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><polyline points="8 12 10 10 13 15 15 11 17 13"/></svg></span>
+          <div>
+            <h2>CPR Dasar</h2>
+            <p style="color:var(--text-light);font-size:.9rem;">Resusitasi Jantung Paru (RJP)</p>
+          </div>
+        </div>
+        <p class="topic-desc">CPR (Cardiopulmonary Resuscitation) atau RJP dilakukan ketika seseorang mengalami henti jantung — tidak bernapas dan tidak ada denyut nadi. Setiap menit tanpa CPR menurunkan peluang hidup sebesar 10%.</p>
+        <p class="steps-title">Langkah-langkah CPR Dewasa (Metode C-A-B)</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><p class="step-text">Pastikan lokasi aman. Ketuk bahu korban dan panggil namanya. Jika tidak merespons, minta orang lain menghubungi 119 dan ambil AED jika ada.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><p class="step-text">Baringkan korban telentang di permukaan keras. Berlutut di samping korban sejajar dengan bahu.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><p class="step-text"><strong>Kompresi:</strong> Letakkan tumit telapak tangan di tengah dada (separuh bawah tulang dada). Tumpuk tangan satunya di atas, jari saling mengait.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div><p class="step-text">Tekan dada sedalam 5–6 cm dengan lengan lurus, kecepatan 100–120 kompresi per menit. Biarkan dada naik penuh setelah tiap kompresi.</p><p class="step-note">Bayangkan irama lagu "Staying Alive" untuk kecepatan yang tepat.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div><p class="step-text">Setelah 30 kompresi, lakukan 2 napas bantuan: miringkan kepala, angkat dagu, tutup hidung, tiupkan udara selama 1 detik hingga dada mengembang.</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">6</span>
+            <div><p class="step-text">Ulangi siklus 30:2 tanpa henti hingga korban bernapas normal, petugas medis tiba, atau AED siap digunakan.</p></div>
+          </div>
+        </div>
+        <div class="warning-box"><strong>CPR tanpa napas buatan:</strong> Jika tidak terlatih atau tidak nyaman, lakukan kompresi dada terus-menerus tanpa berhenti (Hands-Only CPR). Ini tetap jauh lebih baik daripada tidak melakukan apapun.</div>
+
+        <div class="sumber-section">
+          <p class="sumber-title">Video Referensi</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/2NnwZSUmIWI" allowfullscreen title="Cara Melakukan CPR - Kompas.tv"></iframe>
+          </div>
+          <p class="sumber-title">Sumber Terpercaya</p>
+          <div class="ref-links">
+            <a class="ref-link" href="https://www.halodoc.com/artikel/rjp-singkatan-resusitasi-jantung-paru-alias-cpr" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Resusitasi Jantung Paru (RJP / CPR) — Halodoc
+            </a>
+            <a class="ref-link" href="https://pmijambi.org/panduan-praktis-melakukan-rjp-atau-cpr-dalam-situasi-darurat-medis/" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Panduan Praktis CPR dalam Situasi Darurat — PMI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="materi-cta">
+      <h3>Sudah Pelajari Semua Materi?</h3>
+      <p>Uji pemahamanmu dengan Post Test dan lihat seberapa jauh pengetahuanmu meningkat.</p>
+      <a href="posttest.html" class="btn btn-primary">Lanjut ke Post Test</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>🩺 EdukasiP3K</strong> — Belajar Pertolongan Pertama yang Mudah</p>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.querySelector('.nav-menu').classList.toggle('open'); }
+
+    function showTopic(idx) {
+      document.querySelectorAll('.topic-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+      document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      localStorage.setItem('materi_done', 'true');
+    }
+  </script>
+</body>
+</html>

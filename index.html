@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdukasiP3K – Belajar Pertolongan Pertama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🩺 EdukasiP3K</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="materi.html">Materi</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Edukasi Pertolongan Pertama</span>
+      <h1>Siap Jadi<br /><span class="highlight">Penolong Pertama</span><br />yang Andal?</h1>
+      <p>Pelajari cara menangani situasi darurat sehari-hari dengan panduan P3K yang mudah dipahami. Uji pengetahuanmu sebelum dan sesudah belajar!</p>
+      <div class="hero-actions">
+        <a href="pretest.html" class="btn btn-primary">Mulai Pre Test</a>
+        <a href="materi.html" class="btn btn-outline">Lihat Materi Dulu</a>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="illus-circle">
+        <span class="illus-emoji">+</span>
+      </div>
+      <div class="floating-card card-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="8" rx="4"/><line x1="9" y1="12" x2="9.01" y2="12" stroke-width="3"/><line x1="15" y1="12" x2="15.01" y2="12" stroke-width="3"/><line x1="12" y1="9" x2="12" y2="15"/></svg>
+        Luka
+      </div>
+      <div class="floating-card card-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/><polyline points="8 12 10 10 13 15 15 11 17 13"/></svg>
+        CPR
+      </div>
+      <div class="floating-card card-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2a3 3 0 0 1 0 6H7a3 3 0 0 1 0-6"/><path d="M7 2a3 3 0 0 0 0 6"/><path d="M17 22a3 3 0 0 0 0-6H7a3 3 0 0 0 0 6"/><path d="M7 22a3 3 0 0 1 0-6"/><rect x="7" y="8" width="10" height="8" rx="1"/></svg>
+        Patah Tulang
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-bar">
+    <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Topik Materi</span></div>
+    <div class="stat-item"><span class="stat-num">10</span><span class="stat-label">Soal Latihan</span></div>
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Gratis</span></div>
+    <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Langkah Mudah</span></div>
+  </section>
+
+  <section class="features" id="tentang">
+    <div class="section-header">
+      <h2>Apa yang Akan Kamu Pelajari?</h2>
+      <p>Enam topik P3K paling penting dalam kehidupan sehari-hari</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Bandage / wound -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="8" width="20" height="8" rx="4"/>
+            <line x1="9" y1="12" x2="9.01" y2="12" stroke-width="3"/>
+            <line x1="15" y1="12" x2="15.01" y2="12" stroke-width="3"/>
+            <line x1="12" y1="9" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <h3>Penanganan Luka</h3>
+        <p>Cara membersihkan dan membalut luka dengan benar agar tidak infeksi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Droplet / nose bleed -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2 12 2z"/>
+            <path d="M12 15v-4"/>
+          </svg>
+        </div>
+        <h3>Mimisan</h3>
+        <p>Langkah tepat menghentikan mimisan tanpa memperparah kondisi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Airway / choking person -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="2"/>
+            <path d="M12 7v5l-3 4"/>
+            <path d="M12 12l3 4"/>
+            <path d="M9 9H7a2 2 0 0 0-2 2v1"/>
+            <path d="M15 9h2a2 2 0 0 1 2 2v1"/>
+            <path d="M10 20h4"/>
+            <path d="M12 16v4"/>
+          </svg>
+        </div>
+        <h3>Tersedak</h3>
+        <p>Teknik Heimlich maneuver untuk menolong orang yang tersedak.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Pill / poison -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.5 2.5a4.5 4.5 0 0 0-6.364 6.364l8 8a4.5 4.5 0 0 0 6.364-6.364z"/>
+            <line x1="7" y1="7" x2="17" y2="17" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <h3>Keracunan</h3>
+        <p>Tindakan pertama saat seseorang mengalami keracunan makanan atau zat.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Bone -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 2a3 3 0 0 1 0 6H7a3 3 0 0 1 0-6"/>
+            <path d="M7 2a3 3 0 0 0 0 6"/>
+            <path d="M17 22a3 3 0 0 0 0-6H7a3 3 0 0 0 0 6"/>
+            <path d="M7 22a3 3 0 0 1 0-6"/>
+            <rect x="7" y="8" width="10" height="8" rx="1"/>
+          </svg>
+        </div>
+        <h3>Patah Tulang</h3>
+        <p>Cara imobilisasi tulang yang patah menggunakan bahan sederhana.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Heart pulse / CPR -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/>
+            <polyline points="8 12 10 10 13 15 15 11 17 13"/>
+          </svg>
+        </div>
+        <h3>CPR Dasar</h3>
+        <p>Resusitasi jantung paru untuk kondisi henti jantung darurat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <div class="section-header">
+      <h2>Cara Belajar di Sini</h2>
+      <p>Tiga langkah mudah untuk mengukur peningkatan pengetahuanmu</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-icon-label">Pre Test</div>
+        <h3>Pre Test</h3>
+        <p>Kerjakan 10 soal untuk mengukur pengetahuan awalmu sebelum belajar.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-icon-label">Materi</div>
+        <h3>Belajar Materi</h3>
+        <p>Pelajari 6 topik P3K dengan penjelasan langkah demi langkah.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-icon-label">Hasil</div>
+        <h3>Post Test & Hasil</h3>
+        <p>Uji lagi pengetahuanmu dan lihat seberapa jauh kamu berkembang.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="pretest.html" class="btn btn-primary">Mulai Sekarang</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p><strong>🩺 EdukasiP3K</strong> — Belajar Pertolongan Pertama yang Mudah</p>
+    <p style="margin-top:.5rem;opacity:.7;font-size:.85rem;">Dibuat untuk keperluan edukasi. Selalu konsultasikan kondisi darurat serius ke tenaga medis profesional.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-menu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

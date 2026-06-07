@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Test – EdukasiP3K</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999; padding: 1rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .modal-overlay.show { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #fff; border-radius: 20px;
+      padding: 2rem 2rem 1.5rem;
+      max-width: 420px; width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      transform: translateY(20px);
+      transition: transform .25s;
+      text-align: center;
+    }
+    .modal-overlay.show .modal-box { transform: translateY(0); }
+    .modal-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+    .modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: .5rem; }
+    .modal-desc { color: var(--text-light); font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .modal-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .modal-actions .btn { flex: 1; min-width: 120px; }
+
+    .review-item {
+      display: flex; gap: .75rem; align-items: flex-start;
+      padding: .85rem 1rem; border-radius: 10px; font-size: .88rem;
+    }
+    .review-item.correct { background: #e8f5e9; }
+    .review-item.wrong   { background: #fff3f3; }
+    .review-status { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .review-q { font-weight: 700; margin-bottom: .2rem; }
+    .review-wrong-ans { color: #e53e3e; margin-top: .2rem; }
+    .review-right-ans { color: #2d7a3a; margin-top: .1rem; }
+  </style>
+</head>
+<body>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-icon" id="modalIcon"></div>
+      <p class="modal-title" id="modalTitle"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🩺 EdukasiP3K</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="materi.html">Materi</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Post Test</h1>
+    <p>Setelah belajar, saatnya buktikan peningkatan pengetahuanmu!</p>
+  </div>
+
+  <div class="test-container" id="testContainer">
+    <div class="timer-box">
+      <span class="label">Sisa Waktu</span>
+      <span id="timer">10:00</span>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:10%"></div>
+    </div>
+    <p class="progress-label" id="progressLabel">Soal 1 dari 10</p>
+
+    <div id="questionsWrap"></div>
+
+    <div class="q-nav">
+      <button class="btn btn-outline" id="btnPrev" onclick="navigate(-1)">← Sebelumnya</button>
+      <button class="btn btn-secondary" id="btnNext" onclick="navigate(1)">Selanjutnya →</button>
+    </div>
+
+    <div class="submit-area" id="submitArea" style="display:none">
+      <p style="margin-bottom:1rem;color:var(--text-light);font-weight:600;">Pastikan semua soal telah dijawab sebelum submit.</p>
+      <button class="btn btn-primary" id="btnSubmit" onclick="submitTest()">Submit Post Test</button>
+    </div>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div id="resultPanel" style="display:none;max-width:760px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+    <div class="score-card" style="text-align:center;">
+      <h2 id="resTitle" style="margin-top:.5rem;" style="font-size:1.6rem;font-weight:800;margin-bottom:.5rem;"></h2>
+      <p id="resSubtitle" style="color:var(--text-light);margin-bottom:2rem;"></p>
+
+      <div style="background:var(--green-light);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:1.5rem;">
+        <p style="font-size:.85rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">Skor Post Test Kamu</p>
+        <p id="resBigScore" style="font-size:5rem;font-weight:800;color:var(--green);line-height:1;"></p>
+        <p id="resCorrect" style="font-size:.95rem;color:var(--text-light);margin-top:.5rem;"></p>
+      </div>
+
+      <div style="text-align:left;margin-bottom:2rem;">
+        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:.9rem;margin-bottom:.4rem;">
+          <span>Nilai</span><span id="resBarLabel"></span>
+        </div>
+        <div class="prog-bar-wrap" style="height:14px;">
+          <div id="resBar" class="prog-bar post" style="width:0%;transition:width 1.2s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Review jawaban -->
+      <div style="text-align:left;margin-bottom:2rem;">
+        <p style="font-weight:800;font-size:1rem;margin-bottom:1rem;">Review Jawaban</p>
+        <div id="reviewList" style="display:flex;flex-direction:column;gap:.6rem;"></div>
+      </div>
+
+      <a href="hasil.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;font-size:1.05rem;padding:1rem;">
+        Lihat Hasil Perbandingan
+      </a>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script>
+    function toggleMenu() { document.querySelector('.nav-menu').classList.toggle('open'); }
+
+    function showModal({ icon, title, desc, buttons }) {
+      document.getElementById('modalIcon').textContent = icon;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      const actions = document.getElementById('modalActions');
+      actions.innerHTML = '';
+      buttons.forEach(b => {
+        const btn = document.createElement('button');
+        btn.className = 'btn ' + (b.style || 'btn-primary');
+        btn.textContent = b.label;
+        btn.onclick = () => { closeModal(); b.action(); };
+        actions.appendChild(btn);
+      });
+      document.getElementById('modalOverlay').classList.add('show');
+    }
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('show');
+    }
+
+    let timerInterval;
+
+    function initTest() {
+      const answers = {};
+      let current = 0;
+      const qs = getShuffledQuestions();
+
+      const wrap = document.getElementById('questionsWrap');
+      wrap.innerHTML = '';
+      qs.forEach((q, i) => {
+        const card = document.createElement('div');
+        card.className = 'question-card' + (i === 0 ? ' active' : '');
+        card.id = 'q' + i;
+        card.innerHTML = `
+          <p class="q-number">Soal ${i + 1}</p>
+          <p class="q-text">${q.text}</p>
+          <div class="options">
+            ${q.options.map((opt, j) => `
+              <label class="option-label" id="opt-${i}-${j}" onclick="selectOption(${i}, ${j})">
+                <span class="option-dot">${String.fromCharCode(65+j)}</span>
+                ${opt}
+              </label>
+            `).join('')}
+          </div>`;
+        wrap.appendChild(card);
+      });
+
+      window.selectOption = function(qi, oi) {
+        answers[qi] = oi;
+        document.querySelectorAll(`#q${qi} .option-label`).forEach((el, j) => {
+          el.classList.toggle('selected', j === oi);
+        });
+        checkSubmitVisibility();
+      };
+
+      window.navigate = function(dir) {
+        document.getElementById('q' + current).classList.remove('active');
+        current = Math.max(0, Math.min(qs.length - 1, current + dir));
+        document.getElementById('q' + current).classList.add('active');
+        updateProgress();
+      };
+
+      function updateProgress() {
+        const pct = ((current + 1) / qs.length) * 100;
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressLabel').textContent = `Soal ${current + 1} dari ${qs.length}`;
+        document.getElementById('btnPrev').disabled = current === 0;
+        document.getElementById('btnNext').style.display = current === qs.length - 1 ? 'none' : '';
+        document.getElementById('submitArea').style.display = current === qs.length - 1 ? 'block' : 'none';
+      }
+
+      function checkSubmitVisibility() {
+        const allAnswered = qs.every((_, i) => answers[i] !== undefined);
+        document.getElementById('btnSubmit').disabled = !allAnswered;
+      }
+
+      window.submitTest = function() {
+        clearInterval(timerInterval);
+        let score = 0;
+        qs.forEach((q, i) => { if (answers[i] === q.answer) score++; });
+        const pct = Math.round((score / qs.length) * 100);
+        localStorage.setItem('posttest_score', pct);
+        localStorage.setItem('posttest_done', 'true');
+        showResult(qs, answers, score, pct);
+      };
+
+      let seconds = 600;
+      const timerEl = document.getElementById('timer');
+      timerInterval = setInterval(() => {
+        seconds--;
+        const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        timerEl.textContent = `${m}:${s}`;
+        if (seconds <= 60) timerEl.classList.add('urgent');
+        if (seconds <= 0) {
+          clearInterval(timerInterval);
+          showModal({
+            icon: '⏰',
+            title: 'Waktu Habis!',
+            desc: 'Waktu pengerjaan sudah habis. Jawabanmu akan disimpan secara otomatis.',
+            buttons: [{ label: 'Lihat Hasil', style: 'btn-primary', action: () => window.submitTest() }]
+          });
+        }
+      }, 1000);
+
+      updateProgress();
+      checkSubmitVisibility();
+    }
+
+    function showResult(qs, answers, correct, pct) {
+      document.getElementById('testContainer').style.display = 'none';
+      document.getElementById('resultPanel').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      let title, subtitle;
+      if (pct >= 80)      { title = 'Hasil yang sangat baik!'; subtitle = 'Pengetahuan P3K-mu sudah mantap. Cek perbandingannya di halaman hasil.'; }
+      else if (pct >= 60) { title = 'Cukup bagus!'; subtitle = 'Ada beberapa topik yang perlu diperdalam. Lihat review di bawah ini.'; }
+      else if (pct >= 40) { title = 'Masih perlu belajar lebih giat.'; subtitle = 'Pelajari lagi materi yang belum kamu kuasai ya.'; }
+      else                { title = 'Jangan menyerah!'; subtitle = 'Ulangi membaca materi dan coba lagi. Kamu pasti bisa.'; }
+      document.getElementById('resTitle').textContent = title;
+      document.getElementById('resSubtitle').textContent = subtitle;
+      document.getElementById('resBigScore').textContent = pct + '%';
+      document.getElementById('resCorrect').textContent = correct + ' dari 10 soal benar';
+      document.getElementById('resBarLabel').textContent = pct + '%';
+      setTimeout(() => { document.getElementById('resBar').style.width = pct + '%'; }, 200);
+
+      const list = document.getElementById('reviewList');
+      qs.forEach((q, i) => {
+        const isRight = answers[i] === q.answer;
+        const div = document.createElement('div');
+        div.className = 'review-item ' + (isRight ? 'correct' : 'wrong');
+        div.innerHTML = `
+          <span class="review-status">${isRight ? '✓' : '✗'}</span>
+          <div>
+            <p class="review-q">${i + 1}. ${q.text}</p>
+            ${!isRight ? `
+              <p class="review-wrong-ans">Jawabanmu: ${answers[i] !== undefined ? q.options[answers[i]] : '(tidak dijawab)'}</p>
+              <p class="review-right-ans">Jawaban benar: ${q.options[q.answer]}</p>` : ''}
+          </div>`;
+        list.appendChild(div);
+      });
+    }
+
+    if (localStorage.getItem('posttest_done') === 'true') {
+      showModal({
+        icon: '📋',
+        title: 'Post Test Sudah Dikerjakan',
+        desc: 'Kamu sudah pernah mengerjakan Post Test sebelumnya. Mau lihat hasil atau ulangi dari awal?',
+        buttons: [
+          { label: 'Ulangi', style: 'btn-outline', action: () => { localStorage.removeItem('posttest_done'); localStorage.removeItem('posttest_score'); initTest(); } },
+          { label: 'Lihat Hasil', style: 'btn-primary', action: () => { window.location.href = 'hasil.html'; } }
+        ]
+      });
+    } else {
+      initTest();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasil – EdukasiP3K</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999; padding: 1rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .modal-overlay.show { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #fff; border-radius: 20px;
+      padding: 2rem 2rem 1.5rem;
+      max-width: 420px; width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      transform: translateY(20px);
+      transition: transform .25s;
+      text-align: center;
+    }
+    .modal-overlay.show .modal-box { transform: translateY(0); }
+    .modal-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+    .modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: .5rem; }
+    .modal-desc { color: var(--text-light); font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .modal-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .modal-actions .btn { flex: 1; min-width: 120px; }
+  </style>
+</head>
+<body>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-icon" id="modalIcon"></div>
+      <p class="modal-title" id="modalTitle"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🩺 EdukasiP3K</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="materi.html">Materi</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Hasil Belajarmu</h1>
+    <p>Lihat seberapa jauh pengetahuanmu berkembang</p>
+  </div>
+
+  <div class="hasil-container">
+    <div class="score-card" id="verdictCard">
+      <div class="score-emoji" id="verdictEmoji"></div>
+      <h2 id="verdictTitle"></h2>
+      <p class="verdict" id="verdictText"></p>
+
+      <div class="score-compare">
+        <div class="score-box">
+          <p class="label">Pre Test</p>
+          <p class="value" id="preScore">–</p>
+        </div>
+        <div style="display:flex;align-items:center;font-size:1.5rem;color:var(--green);font-weight:800;">→</div>
+        <div class="score-box" style="background:var(--green);color:white;">
+          <p class="label" style="color:rgba(255,255,255,.8)">Post Test</p>
+          <p class="value" style="color:white" id="postScore">–</p>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-row">
+          <div class="prog-label">
+            <span>Pre Test</span>
+            <span id="preLabel">0%</span>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar pre" id="preBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="progress-row">
+          <div class="prog-label">
+            <span>Post Test</span>
+            <span id="postLabel">0%</span>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar post" id="postBar" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="improvement-box" id="improvementBox">
+      <div class="delta" id="deltaText">+0%</div>
+      <p id="deltaDesc">Peningkatan pengetahuanmu</p>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-outline" onclick="confirmReset()">Ulangi dari Awal</button>
+      <a href="materi.html" class="btn btn-secondary">Pelajari Lagi</a>
+    </div>
+
+    <div id="noData" style="display:none;text-align:center;padding:3rem 0;">
+      <h3 style="margin:.75rem 0 .5rem;">Belum ada data tes</h3>
+      <p style="color:var(--text-light);margin-bottom:1.5rem;">Kerjakan Pre Test dan Post Test terlebih dahulu untuk melihat hasil perbandingan.</p>
+      <a href="pretest.html" class="btn btn-primary">Mulai Pre Test</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>EdukasiP3K</strong> — Belajar Pertolongan Pertama yang Mudah</p>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.querySelector('.nav-menu').classList.toggle('open'); }
+
+    function showModal({ icon, title, desc, buttons }) {
+      document.getElementById('modalIcon').textContent = icon || '';
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      const actions = document.getElementById('modalActions');
+      actions.innerHTML = '';
+      buttons.forEach(b => {
+        const btn = document.createElement('button');
+        btn.className = 'btn ' + (b.style || 'btn-primary');
+        btn.textContent = b.label;
+        btn.onclick = () => { closeModal(); b.action(); };
+        actions.appendChild(btn);
+      });
+      document.getElementById('modalOverlay').classList.add('show');
+    }
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('show');
+    }
+
+    const pre  = parseInt(localStorage.getItem('pretest_score')  ?? '-1');
+    const post = parseInt(localStorage.getItem('posttest_score') ?? '-1');
+
+    if (pre < 0 || post < 0) {
+      document.getElementById('verdictCard').style.display    = 'none';
+      document.getElementById('improvementBox').style.display = 'none';
+      document.querySelector('.action-buttons').style.display = 'none';
+      document.getElementById('noData').style.display         = 'block';
+    } else {
+      const delta = post - pre;
+
+      document.getElementById('preScore').textContent  = pre  + '%';
+      document.getElementById('postScore').textContent = post + '%';
+      document.getElementById('preLabel').textContent  = pre  + '%';
+      document.getElementById('postLabel').textContent = post + '%';
+
+      setTimeout(() => {
+        document.getElementById('preBar').style.width  = pre  + '%';
+        document.getElementById('postBar').style.width = post + '%';
+      }, 300);
+
+      document.getElementById('deltaText').textContent = (delta >= 0 ? '+' : '') + delta + '%';
+      if (delta < 0) {
+        document.getElementById('improvementBox').style.background = 'linear-gradient(135deg,#e53e3e,#c53030)';
+      }
+
+      let title, text, deltaDesc;
+      if (post >= 80 && delta >= 0) {
+        title = 'Luar Biasa!';
+        text  = `Pengetahuanmu meningkat ${delta}%. Kamu sudah siap menjadi penolong pertama yang andal.`;
+        deltaDesc = 'Peningkatan pengetahuan P3K-mu';
+      } else if (delta > 0) {
+        title = 'Bagus, Terus Belajar!';
+        text  = `Pengetahuanmu meningkat ${delta}%. Pelajari lagi materi untuk hasil yang lebih optimal.`;
+        deltaDesc = 'Peningkatan dari Pre ke Post Test';
+      } else if (delta === 0) {
+        title = 'Tidak Ada Perubahan';
+        text  = 'Skor pre dan post test-mu sama. Coba baca ulang materi dengan lebih teliti.';
+        deltaDesc = 'Tidak ada peningkatan';
+      } else {
+        title = 'Coba Lagi!';
+        text  = 'Skor post test-mu lebih rendah dari pre test. Jangan menyerah — pelajari lagi materinya.';
+        deltaDesc = 'Penurunan dari Pre ke Post Test';
+      }
+
+      document.getElementById('verdictTitle').textContent = title;
+      document.getElementById('verdictText').textContent  = text;
+      document.getElementById('deltaDesc').textContent    = deltaDesc;
+    }
+
+    function confirmReset() {
+      showModal({
+        title: 'Ulangi dari Awal?',
+        desc: 'Semua data pre test dan post test akan dihapus. Kamu akan mulai dari awal.',
+        buttons: [
+          { label: 'Batal',          style: 'btn-outline',  action: () => {} },
+          { label: 'Ya, Ulangi',     style: 'btn-primary',  action: () => { localStorage.clear(); window.location.href = 'index.html'; } }
+        ]
+      });
+    }
+  </script>
+</body>
+</html>
