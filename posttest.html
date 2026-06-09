@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post Test – EdukasiP3K</title>
+  <title>Quiz Pengetahuan Akhir Akhir – EdukasiP3K</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -67,7 +67,7 @@
   </nav>
 
   <div class="page-header">
-    <h1>Post Test</h1>
+    <h1>Quiz Pengetahuan Akhir</h1>
     <p>Setelah belajar, saatnya buktikan peningkatan pengetahuanmu!</p>
   </div>
 
@@ -91,7 +91,7 @@
 
     <div class="submit-area" id="submitArea" style="display:none">
       <p style="margin-bottom:1rem;color:var(--text-light);font-weight:600;">Pastikan semua soal telah dijawab sebelum submit.</p>
-      <button class="btn btn-primary" id="btnSubmit" onclick="submitTest()">Submit Post Test</button>
+      <button class="btn btn-primary" id="btnSubmit" onclick="submitTest()">Submit Quiz</button>
     </div>
   </div>
 
@@ -102,7 +102,7 @@
       <p id="resSubtitle" style="color:var(--text-light);margin-bottom:2rem;"></p>
 
       <div style="background:var(--green-light);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:1.5rem;">
-        <p style="font-size:.85rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">Skor Post Test Kamu</p>
+        <p style="font-size:.85rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">Skor Quiz Pengetahuan Akhir Kamu</p>
         <p id="resBigScore" style="font-size:5rem;font-weight:800;color:var(--green);line-height:1;"></p>
         <p id="resCorrect" style="font-size:.95rem;color:var(--text-light);margin-top:.5rem;"></p>
       </div>
@@ -277,8 +277,8 @@
     if (localStorage.getItem('posttest_done') === 'true') {
       showModal({
         icon: '📋',
-        title: 'Post Test Sudah Dikerjakan',
-        desc: 'Kamu sudah pernah mengerjakan Post Test sebelumnya. Mau lihat hasil atau ulangi dari awal?',
+        title: 'Quiz Sudah Dikerjakan',
+        desc: 'Kamu sudah pernah mengerjakan Quiz Pengetahuan Akhir ini. Mau lihat hasil atau ulangi dari awal?',
         buttons: [
           { label: 'Ulangi', style: 'btn-outline', action: () => { localStorage.removeItem('posttest_done'); localStorage.removeItem('posttest_score'); initTest(); } },
           { label: 'Lihat Hasil', style: 'btn-primary', action: () => { window.location.href = 'hasil.html'; } }

@@ -68,12 +68,12 @@
 
       <div class="score-compare">
         <div class="score-box">
-          <p class="label">Pre Test</p>
+          <p class="label">Quiz Pengetahuan Awal</p>
           <p class="value" id="preScore">–</p>
         </div>
         <div style="display:flex;align-items:center;font-size:1.5rem;color:var(--green);font-weight:800;">→</div>
         <div class="score-box" style="background:var(--green);color:white;">
-          <p class="label" style="color:rgba(255,255,255,.8)">Post Test</p>
+          <p class="label" style="color:rgba(255,255,255,.8)">Quiz Pengetahuan Akhir</p>
           <p class="value" style="color:white" id="postScore">–</p>
         </div>
       </div>
@@ -81,7 +81,7 @@
       <div class="progress-section">
         <div class="progress-row">
           <div class="prog-label">
-            <span>Pre Test</span>
+            <span>Quiz Pengetahuan Awal</span>
             <span id="preLabel">0%</span>
           </div>
           <div class="prog-bar-wrap">
@@ -90,7 +90,7 @@
         </div>
         <div class="progress-row">
           <div class="prog-label">
-            <span>Post Test</span>
+            <span>Quiz Pengetahuan Akhir</span>
             <span id="postLabel">0%</span>
           </div>
           <div class="prog-bar-wrap">
@@ -177,7 +177,7 @@
       } else if (delta > 0) {
         title = 'Bagus, Terus Belajar!';
         text  = `Pengetahuanmu meningkat ${delta}%. Pelajari lagi materi untuk hasil yang lebih optimal.`;
-        deltaDesc = 'Peningkatan dari Pre ke Post Test';
+        deltaDesc = 'Peningkatan dari quiz pengetahuan awal ke akhir';
       } else if (delta === 0) {
         title = 'Tidak Ada Perubahan';
         text  = 'Skor pre dan post test-mu sama. Coba baca ulang materi dengan lebih teliti.';
@@ -185,7 +185,7 @@
       } else {
         title = 'Coba Lagi!';
         text  = 'Skor post test-mu lebih rendah dari pre test. Jangan menyerah — pelajari lagi materinya.';
-        deltaDesc = 'Penurunan dari Pre ke Post Test';
+        deltaDesc = 'Penurunan dari quiz pengetahuan awal ke akhir';
       }
 
       document.getElementById('verdictTitle').textContent = title;
@@ -196,7 +196,7 @@
     function confirmReset() {
       showModal({
         title: 'Ulangi dari Awal?',
-        desc: 'Semua data pre test dan post test akan dihapus. Kamu akan mulai dari awal.',
+        desc: 'Semua data Quiz Pengetahuan Awal dan Quiz Pengetahuan Akhir akan dihapus. Kamu akan mulai dari awal.',
         buttons: [
           { label: 'Batal',          style: 'btn-outline',  action: () => {} },
           { label: 'Ya, Ulangi',     style: 'btn-primary',  action: () => { localStorage.clear(); window.location.href = 'index.html'; } }

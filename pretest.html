@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre Test – EdukasiP3K</title>
+  <title>Quiz Pengetahuan Awal Awal – EdukasiP3K</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -58,8 +58,8 @@
   </nav>
 
   <div class="page-header">
-    <h1>Pre Test</h1>
-    <p>Uji pengetahuan awalmu sebelum mempelajari materi P3K</p>
+    <h1>Quiz Pengetahuan Awal</h1>
+    <p>Uji pengetahuanmu sebelum mempelajari materi P3K</p>
   </div>
 
   <div class="test-container" id="testContainer">
@@ -82,7 +82,7 @@
 
     <div class="submit-area" id="submitArea" style="display:none">
       <p style="margin-bottom:1rem;color:var(--text-light);font-weight:600;">Pastikan semua soal telah dijawab sebelum submit.</p>
-      <button class="btn btn-primary" id="btnSubmit" onclick="submitTest()">✅ Submit Pre Test</button>
+      <button class="btn btn-primary" id="btnSubmit" onclick="submitTest()">Submit Quiz</button>
     </div>
   </div>
 
@@ -93,7 +93,7 @@
       <p id="resSubtitle" style="color:var(--text-light);margin-bottom:2rem;"></p>
 
       <div style="background:var(--green-light);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:1.5rem;">
-        <p style="font-size:.85rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">Skor Pre Test Kamu</p>
+        <p style="font-size:.85rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">Skor Quiz Pengetahuan Awal Kamu</p>
         <p id="resBigScore" style="font-size:5rem;font-weight:800;color:var(--green);line-height:1;"></p>
         <p id="resCorrect" style="font-size:.95rem;color:var(--text-light);margin-top:.5rem;"></p>
       </div>
@@ -108,7 +108,7 @@
       </div>
 
       <div style="background:var(--green-light);border-radius:var(--radius-sm);padding:1rem 1.25rem;text-align:left;margin-bottom:2rem;font-size:.9rem;color:var(--green-dark);font-weight:600;">
-        Sekarang saatnya pelajari materi P3K untuk meningkatkan pemahamanmu sebelum Post Test!
+        Sekarang saatnya pelajari materi P3K untuk meningkatkan pemahamanmu!
       </div>
 
       <a href="materi.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;font-size:1.05rem;padding:1rem;">
@@ -205,6 +205,9 @@
         const pct = Math.round((score / qs.length) * 100);
         localStorage.setItem('pretest_score', pct);
         localStorage.setItem('pretest_done', 'true');
+        // Reset data posttest agar quiz akhir bisa dikerjakan fresh
+        localStorage.removeItem('posttest_done');
+        localStorage.removeItem('posttest_score');
         showResult(score, pct);
       };
 
@@ -240,7 +243,7 @@
 
       let title, subtitle;
       if (pct >= 80)      { title = 'Keren! Dasar P3K-mu sudah bagus!'; subtitle = 'Pelajari materi untuk memantapkan pengetahuanmu.'; }
-      else if (pct >= 60) { title = 'Lumayan! Masih ada ruang untuk berkembang.'; subtitle = 'Baca materi dengan teliti agar skor post test-mu makin tinggi.'; }
+      else if (pct >= 60) { title = 'Lumayan! Masih ada ruang untuk berkembang.'; subtitle = 'Baca materi dengan teliti agar skormu makin tinggi.'; }
       else if (pct >= 40) { title = 'Tenang, ini memang tujuan belajar!'; subtitle = 'Jangan khawatir — setelah baca materi, kamu pasti bisa lebih baik.'; }
       else                { title = 'Yuk mulai belajar dari awal!'; subtitle = 'Materi yang tersedia akan membantumu memahami P3K dari dasar.'; }
       document.getElementById('resTitle').textContent = title;
@@ -255,8 +258,8 @@
     if (localStorage.getItem('pretest_done') === 'true') {
       showModal({
         icon: '📝',
-        title: 'Pre Test Sudah Dikerjakan',
-        desc: 'Kamu sudah pernah mengerjakan Pre Test sebelumnya. Mau ulangi dari awal atau lanjut ke materi?',
+        title: 'Quiz Sudah Dikerjakan',
+        desc: 'Kamu sudah pernah mengerjakan Quiz Pengetahuan Awal ini. Mau ulangi dari awal atau lanjut ke materi?',
         buttons: [
           { label: 'Ulangi dari Awal', style: 'btn-outline', action: () => { localStorage.clear(); initTest(); } },
           { label: 'Lanjut ke Materi', style: 'btn-primary', action: () => { window.location.href = 'materi.html'; } }
